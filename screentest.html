@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Native JS vs jQuery vs Bootstrap</title>
+</head>
+<body>
+<table id="primus">
+  <tr>
+    <td id="leftcolumn" style="border: solid 1px red">A</td>
+    <td id="rightcolumn" style="border: solid 1px green">B</td>
+  </tr>
+</table>
+
+<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+<script>
+//Native JavaScript way
+  //alert("JS - The screen width is " + window.innerWidth);
+
+/*
+  //event triggers on page load after HTML renders
+  if(window.innerWidth<1280)
+  {
+    document.getElementById("rightcolumn").style.display = "none";
+  }
+*/
+
+/*
+  window.addEventListener("resize",reSizeMe);
+
+  function reSizeMe() {
+    if(window.innerWidth<1280)
+    {
+      document.getElementById("rightcolumn").style.display = "none";
+    }
+    else 
+    {
+      document.getElementById("rightcolumn").style.display = "block";
+    }
+  }
+*/
+
+//jQuery way
+$(function(){
+  alert("jQuery - The screen width izzz " + $(window).width());
+
+/*
+  //triggers on page load after HTML renders
+  if ($(window).width()<1280)
+  {
+    $("#rightcolumn").hide();
+    //$("#rightcolumn").css("display","none");
+  }
+*/
+
+
+  $(window).resize(function(){
+    if ($(window).width()<1280)
+    {
+      $("#rightcolumn").hide();
+    }
+    else
+    {
+     $("#rightcolumn").show(); 
+    }
+  });
+
+  
+  $("#primus").on("click","#leftcolumn",function(){
+    alert("Hello");
+  });
+
+});
+
+</script>
+<body>
+</html>
